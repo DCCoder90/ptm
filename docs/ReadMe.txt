@@ -20,7 +20,21 @@ for use in CLI and GUI applications ONLY.
 | Requirements |
 ----------------
 *Only works with Linux based systems
-*Must have pcntl extensions enabled
+*Must have pnctl extensions enabled
+
+To enable pnctl extensions read the following instructions:
+1) Make sure your /etc/apt/sources.list has a deb-src line. If it doesn't, duplicate a deb line and change "deb" to "deb-src", then apt-get update
+
+2) Install the PHP development files:
+$ apt-get install php5-dev
+3) Go to some temporary directory and get the PHP source:
+$ apt-get source php5
+4) Build the pcntl module
+$ cd php*/ext/pcntl
+$ phpize
+$ ./configure --prefix=/usr
+$ make
+$ make install
 
 -----------------------
 | Availible functions |

@@ -2,7 +2,7 @@
 //In this example we load and run the task "HelloWorld"
 
 //Include the task manager into our program
-require_once("./taskmanager/taskmanager.php");
+require_once("./taskmanager/container.php");
 
 //Initialize the Manager
 $manager=new TaskManager();

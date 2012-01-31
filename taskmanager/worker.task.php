@@ -74,7 +74,7 @@ class Task {
 	 * * Interacts with the taskmanager's internal memory *
 	 * @return mixed
 	 */
-	public function share_memory($method="COUN",$arg1="",$arg2=""){
+	public function share_memory($method="COUN",$arg1="",$arg2="",$arg3=""){
 		$task_name=get_class($this);
 		if($this->verbose==true){
 			echo "Worker: Accessing internal memory. Method: ".$method."\n";
@@ -150,6 +150,21 @@ class Task {
 				fclose($fh);
 				return $key;
 			break;
+
+			case "EDIT":
+				$memory=file_get_contents($memfile);
+				$memory=unserialize($memory);
+
+				$memory[$arg1][$arg2]=$arg3;
+
+				$fh=fopen($memfile,"a+");
+				$memory=serialize($memory);
+				ftruncate($fh,0);
+				fwrite($fh,$memory);
+				fclose($fh);
+				return true;
+			break;
+
 		}
 	}
 

@@ -104,7 +104,7 @@ Task::share_memory($method,$arg1,$arg2)
 ABOUT: Interacts with the Task Manager's internal memory
 
 DESCRIPTION:
-mixed share_memory(string $method[, mixed $arg1, mixed $arg2])
+mixed share_memory(string $method[, mixed $arg1, mixed $arg2, mixed $arg3])
 
 PARAMETERS:
 method - This identifies the function to carry out on the internal memory.
@@ -116,10 +116,13 @@ method - This identifies the function to carry out on the internal memory.
 		 POST - Places data into memory
 arg1   - This identifies the place where information was stored.  This must be
 		 defined in order to use the "GET" method.  When using the "POST" method
-		 this identifies the data to be stored.
+		 this identifies the data to be stored.  When using the "EDIT" method,
+		 this is the name of the task that originally stored the information.
 arg2   - This identifies the "key" of the data being grabbed.  This argument may
 		 also be used to designate a specific key for the data being placed with
 		 the "POST" method.
+arg3   - This contains the replacement for the orignal data when using the "EDIT
+		 " method.
 
 RETURN VALUES:
 
@@ -130,6 +133,7 @@ COUN		Integer
 ERAS		Bool
 GET			Mixed
 POST		Mixed
+EDIT		Bool
 
 NOTES:
 PTM's internal memory is stored indefinately in a static file and any data stored

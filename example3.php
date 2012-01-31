@@ -2,14 +2,19 @@
 //In this example we load and run the task "HelloWorld" with forking enabled
 
 //Include the task manager into our program
-require_once("./taskmanager/taskmanager.php");
+require_once("./taskmanager/container.php");
 
 //Initialize the Manager with throttle enabled
 $manager=new TaskManager(true);
+$manager->verbose=true;
+$manager->sim_par=1;
+$manager->sleep=10;
 
 //Load the task "HelloWorld" along with TRUE to enable forking 10 times
-for($i=0;$i>10;$i++){
+$i=0;
+while($i<10){
 	$manager->add_task(new HelloWorld(),TRUE);
+	$i++;
 }
 
 

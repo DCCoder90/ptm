@@ -37,8 +37,8 @@ class TaskManager{
 		$this->sleep=2;
 		$this->verbose=false;
 		//Check if pnctl extension is loaded, if not try to load it.
-		if(!extension_loaded("pnctl")){
-			if(!dl('pnctl.so')){
+		if(!extension_loaded("pcntl")){
+			if(!dl('pcntl.so')){
 				die("ERROR: Could not load the pnctl extension!\n");
 			}
 		}
