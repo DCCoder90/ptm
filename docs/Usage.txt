@@ -1,0 +1,191 @@
+-----------------------------------
+| Task Manager Specific Functions |
+-----------------------------------
+Add Task
+Manager::add_task($task,$fork)
+
+ABOUT: Adds a task to the pool
+
+DESCRIPTION:
+int  add_task(mixed $task [, bool $fork])
+
+PARAMETERS:
+task	-	The task to add to the pool, should be a class.
+fork	-	Option parameter, if set to true will set the class to fork
+
+
+
+Check Tasks
+Manager::check_tasks()
+
+ABOUT: Checks if there are any tasks in the pool
+
+DESCRIPTION:
+bool check_tasks()
+
+PARAMETERS:
+Null
+
+RETURN VALUES:
+bool	-	Returns true if there are any tasks in pool and false if not
+
+
+Remove Task
+Manager::remove_task($key)
+
+ABOUT: Removes a task from the pool based on the key
+
+DESCRIPTION:
+bool remove_task(int $key)
+
+PARAMETERS:
+key		- The key argument should be the key of the task that is returned when
+		  the add_task() function is called
+
+RETURN VALUES:
+bool	- Returns true when task is succesfully removed.
+
+
+Run
+Manager::run()
+
+ABOUT: Runs all tasks currently in the pool
+
+DESCRIPTION:
+bool run()
+
+PARAMETERS:
+Null
+
+RETURN VALUES:
+bool	-	Returns true upon succesful completion of tasks
+
+
+
+Check Fork
+Manager::check_fork(key)
+
+ABOUT: Checks if a task with the given key is suppose to fork
+
+DESCRIPTION:
+bool check_fork(int key)
+
+PARAMETERS:
+key		- The key argument should be the key of the task that is returned when
+		  the add_task() function is called
+
+RETURN VALUES:
+bool	- Returns true if the task is suppose to fork and false if it isn't.
+
+
+
+Count Fork
+Manager::count_fork()
+
+ABOUT: Counts the number of forking tasks in pool and queue
+
+DESCRIPTION:
+array count_fork()
+
+PARAMETERS:
+Null
+
+RETURN VALUES:
+Array - Returns the values in array with 0 being the tasks in the pool and
+		1 being the tasks in the queue
+
+---------------------------
+| Task Specific Functions |
+---------------------------
+
+Share Memory
+Task::share_memory($method,$arg1,$arg2)
+
+ABOUT: Interacts with the Task Manager's internal memory
+
+DESCRIPTION:
+mixed share_memory(string $method[, mixed $arg1, mixed $arg2])
+
+PARAMETERS:
+method - This identifies the function to carry out on the internal memory.
+		 The method may be one of 5 parameters:
+		 CLEA - Cleans the memory, erases everything stored by the running task
+		 COUN - Counts the amount of data in memory
+		 ERAS - Erases all data stored in memory
+		 GET  - Grabs data from memory
+		 POST - Places data into memory
+arg1   - This identifies the place where information was stored.  This must be
+		 defined in order to use the "GET" method.  When using the "POST" method
+		 this identifies the data to be stored.
+arg2   - This identifies the "key" of the data being grabbed.  This argument may
+		 also be used to designate a specific key for the data being placed with
+		 the "POST" method.
+
+RETURN VALUES:
+
+Method		Value
+-----------------
+CLEA		Bool
+COUN		Integer
+ERAS		Bool
+GET			Mixed
+POST		Mixed
+
+NOTES:
+PTM's internal memory is stored indefinately in a static file and any data stored
+will remain in memory until it is "cleaned" or "erased".
+
+
+------------------
+|  Other Stuff   |
+------------------
+Sleep
+Manager::sleep
+
+ABOUT: Sets how long the task manager should sleep in order to wait for
+	   forking tasks to finish. Set to 2 by default.
+
+USE:
+$manager->sleep=2;
+
+
+
+Sim Par
+Manager::sim_par
+
+About: Controls the number of children processes allowed to spawn at one time.
+	   Set to 5 by default.
+
+USE:
+$manager->sim_par=5;
+
+
+
+Verbose
+Manager::verbose
+
+About: Turns verbose reporting on or off (set to off by default).  This enables
+	   easy debugging of tasks and the taskmanager during development.
+
+USE:
+$manager->verbose=true;
+
+NOTES:
+This will result in a large amount of output from the Manager and Worker.
+If TaskManager is being used in GUI applications I highly reccomend this
+be left OFF as it will end with unintended results.
+
+
+
+Throttle
+
+ABOUT: The task manager comes with a built-in throttle function to only allow
+	   a set number of children process to run in paralell at one time.  This
+	   is turned off by default due to it currently still being in beta stage.
+
+DESCRIPTION:
+
+	  To enable the throttle function start the task manager with the throttle
+	  variable set to true as in the following example:
+
+$manager=new TaskManager(true);
