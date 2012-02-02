@@ -1,0 +1,49 @@
+-------------------
+| Creating a Task |
+-------------------
+
+The task manager is capable of handling a large number of tasks and quickly and
+efficiently running them all in sequence.
+
+Just placing PHP code in the tasks directory is not enough for the task manager
+to recognize it.  All tasks follow a strict naming convention.  When creating a
+task be sure to name the file TASKNAME.task.php and place it in the appropriate
+file.
+
+Please use the following template to create your own tasks:
+
+<?php
+class TASKNAME extends Task{
+	function run(){
+		CODE TO RUN TASK HERE
+	}
+}
+?>
+
+Also not that your task may have more then one function in them, however the
+task manager will only run the run() function, therefore it is important that
+this function be included in all of your tasks otherwise and exception will be
+thrown.
+
+Tasks may store information within the Task Manager for use in future tasks.
+Please refer to the Usage.txt file in the docs directory on instructions of
+how to accomplish this.
+
+-------------------------------------
+| Resevered variables and functions |
+-------------------------------------
+
+The following is a list of reserved variables and functions, tasks may NOT have
+variables or functions with these names, doing so may result in unintended consequences.
+
+Functions:
+fork()
+get_ids()
+pid()
+share_memory()
+
+Variables:
+
+$pid
+$ppid
+$verbose
