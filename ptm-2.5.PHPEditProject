@@ -1,4 +1,4 @@
-<Project version="3.4" name="ptm-2.2" xmlns="http://www.waterproof.fr/PHPEdit/Project">
+<Project version="3.4" name="ptm-2.5" xmlns="http://www.waterproof.fr/PHPEdit/Project">
   <set:Settings version="3.4" xmlns:set="http://www.waterproof.fr/PHPEdit/Settings">
     <set:Property key="Languages">
       <set:Property key="PHP">
