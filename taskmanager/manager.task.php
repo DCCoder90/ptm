@@ -144,6 +144,27 @@ class TaskManager{
 	}
 
 	/**
+	 * TaskManager::killall()
+	 * * Kills all active processes*
+	 * @return book
+	 */
+	public function killall(){
+		try{
+			while($pid=pcntl_wait($status,WNOHANG)){
+				if(!pcntl_wifstopped($status)){
+					posix_kill($pid,SIGKILL);
+				}
+			}
+			return true;
+		}catch (Exception $e) {
+			if($this->verbose==true){
+				echo "Exception in killall() - \n".$e->getMessage();
+			}
+			return false;
+		}
+	}
+
+	/**
 	 * TaskManager::check_fork()
 	 *  * Checks if the task is suppose to fork or not*
 	 * @return bool
