@@ -36,7 +36,7 @@ class TaskManager{
 		$this->sim_par=5;
 		$this->sleep=2;
 		$this->verbose=false;
-		//Check if pnctl extension is loaded, if not try to load it.
+
 		if(!extension_loaded("pcntl")){
 			if(!dl('pcntl.so')){
 				die("ERROR: Could not load the pnctl extension!\n");
@@ -104,21 +104,16 @@ class TaskManager{
 		foreach($this->task_pool as $task){
 			$key=$this->get_task_key($task);
 
-			//Add task to the queue
 			$this->task_queue[$key]=$task;
 			$this->fork_queue[$key]=$this->fork_pool[$key];
 			if($this->verbose==true){
 				echo "Manager: Task '".$key."' added to queue.\n";
 			}
-			//Remove task from the pool
 			$this->remove_task($key,true);
 
-			//Check if task is suppose to fork
 			if($this->check_fork($key)==true){
-				//If yes then see how many tasks are already forked
 				$fork_que=$this->count_fork();
-				//If it is over the maximum number, sleep until they
-				//die
+
 				while($fork_que[1]>=$this->sim_par){
 					if($this->verbose==true){
 						echo "Manager: Maximum number of forked tasks currently running, going to sleep.\n";
@@ -133,7 +128,7 @@ class TaskManager{
 			if($this->verbose==true){
 				echo "Manager: Currently Running Task with key ".$key."\n";
 			}
-			//Run task
+
 			$task->verbose=$this->verbose;
 			$task->memfile=$this->cust_memfile;
 			$task->fork($this->fork_queue[$key]);

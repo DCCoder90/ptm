@@ -1,10 +1,11 @@
 <?php
+error_reporting(0);
+
 /**
  * get_tasks()
  * * Grabs all tasks in the "tasks" directory and loads them into memory *
  * @return
  */
-error_reporting(0);
 function get_tasks($cwd){
 	$tasks=array();
 	$err=array();

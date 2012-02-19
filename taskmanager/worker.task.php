@@ -29,10 +29,10 @@ class Task {
 			if($pid==-1){
 				throw new Exception('fork error on Task object');
 			}elseif($pid){
-				#parent class
+				//parent class
 				$this->pid=$pid;
 			}else{
-				#child class
+				//child class
 				$this->get_ids();
 				$this->run();
 				exit(1);
@@ -52,7 +52,6 @@ class Task {
 	 * @return
 	 */
 	public function get_ids(){
-		#child
 		$this->ppid=posix_getppid();
 		$this->pid=posix_getpid();
 	}
