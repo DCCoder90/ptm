@@ -4,7 +4,7 @@
  *
  * @package PTM
  * @author Darkvengance
- * @copyright Copyright (c) 2011
+ * @copyright Copyright (c) 2012
  * @version $Id$
  * @access public
  */
