@@ -30,7 +30,11 @@ class TaskManager{
 		$this->task_queue=array();
 		$this->fork_queue=array();
 
-		$this->cust_memfile=$cust_memfile;
+		if($cust_memfile!=""&&$cust_memfile!=NULL){
+			$this->cust_memfile=$cust_memfile;
+		}else{
+			$this->cust_memfile=null;
+		}
 
 		$this->throttle=$throttle;
 		$this->sim_par=5;

@@ -78,7 +78,12 @@ class Task {
 		if($this->verbose==true){
 			echo "Worker: Accessing internal memory. Method: ".$method."\n";
 		}
-		$memfile="./taskmanager/memory";
+
+		if(TaskManager::cust_memfile!=null){
+			$memfile=TaskManager::cust_memfile;
+		}else{
+			$memfile="./taskmanager/memory";
+		}
 
 		switch($method){
 
