@@ -2,17 +2,19 @@
 ///PTM - PhpTaskManager///
 ///Created: 2011-08-31 ///
 ///Author: Darkvengance///
-///Version: 2.1        ///
-///Updated: 2011-10-17 ///
+///Version: 2.5        ///
+///Updated: 2012-02-19 ///
 \\\\\\\\\\\\\\\\\\\\\\\\\\
-The PhpTaskManager is a simple task manager meant for use by larger more structured
-PHP programs.  PTM has many useful functions currently built in and is capable of
-managing many different tasks assigned to it with an "easy to use" methodology.
+The PhpTaskManager is a task manager meant for use by larger more structured
+PHP programs.  PTM has many useful functions currently built in and is capable
+of managing many different tasks assigned to it with an "easy to use"
+methodology.
 
-Along with it's "case-by-case" forking functionality PTM also has an internal memory,
-this allows tasks to store information intended for use by other tasks.
+Along with it's "case-by-case" forking functionality PTM also has an pseudo
+internal memory, this allows tasks to store information intended for use by
+other tasks, or for future use.
 
-Please note that PhpTaskManager is not for use in web applications, it is meant
+Please note that PhpTaskManager is NOT for use in web applications, it is meant
 for use in CLI and GUI applications ONLY.
 
 
@@ -45,6 +47,7 @@ $ make install
 *Forking tasks
 *Share memory among tasks
 *"Throttle" function to only allow a set number of children tasks to spawn at once.
+*Immediatley kill all active tasks
 
 -----------------
 | File Purposes |
